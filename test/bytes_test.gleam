@@ -1,5 +1,5 @@
-import gleam/bit_array
 import bytes
+import gleam/bit_array
 import gleeunit
 
 pub fn main() -> Nil {
@@ -7,7 +7,6 @@ pub fn main() -> Nil {
 }
 
 pub fn find_test() {
-
   let a = bit_array.from_string("hello")
 
   assert bytes.find(a, bit_array.from_string("he")) == Ok(0)
@@ -20,11 +19,11 @@ pub fn find_test() {
 
 pub fn split_once_test() {
   let a = bit_array.from_string("hello\r\nworld")
-  assert bytes.split_once(a, <<"\r\n">>) == [<<"hello\r\n">>,<<"world">>]
-  assert bytes.split_once(a, <<"\n">>) == [<<"hello\r\n">>,<<"world">>]
+  assert bytes.split_once(a, <<"\r\n">>) == [<<"hello\r\n">>, <<"world">>]
+  assert bytes.split_once(a, <<"\n">>) == [<<"hello\r\n">>, <<"world">>]
 
   let b = bit_array.from_string("\nhelloworld")
-  assert bytes.split_once(b, <<"\n">>) == [<<"\n">>,<<"helloworld">>]
+  assert bytes.split_once(b, <<"\n">>) == [<<"\n">>, <<"helloworld">>]
   assert bytes.split_once(b, <<"z">>) == [<<"\nhelloworld">>]
   assert bytes.split_once(b, <<"\nhelloworld">>) == [<<"\nhelloworld">>]
   assert bytes.split_once(b, <<"l">>) == [<<"\nhel">>, <<"loworld">>]
@@ -32,17 +31,17 @@ pub fn split_once_test() {
 
 pub fn split_test() {
   let a = bit_array.from_string("hello\r\nworld")
-  assert bytes.split(a, <<"\r\n">>) == [<<"hello\r\n">>,<<"world">>]
-  assert bytes.split(a, <<"\n">>) == [<<"hello\r\n">>,<<"world">>]
+  assert bytes.split(a, <<"\r\n">>) == [<<"hello\r\n">>, <<"world">>]
+  assert bytes.split(a, <<"\n">>) == [<<"hello\r\n">>, <<"world">>]
 
   let b = bit_array.from_string("\nhelloworld")
-  assert bytes.split(b, <<"\n">>) == [<<"\n">>,<<"helloworld">>]
+  assert bytes.split(b, <<"\n">>) == [<<"\n">>, <<"helloworld">>]
   assert bytes.split(b, <<"z">>) == [<<"\nhelloworld">>]
   assert bytes.split(b, <<"\nhelloworld">>) == [<<"\nhelloworld">>]
   assert bytes.split(b, <<"l">>) == [<<"\nhel">>, <<"l">>, <<"oworl">>, <<"d">>]
 
   let c = bit_array.from_string("\nhello\nworld\n")
-  assert bytes.split(c, <<"\n">>) == [<<"\n">>,<<"hello\n">>,<<"world\n">>]
+  assert bytes.split(c, <<"\n">>) == [<<"\n">>, <<"hello\n">>, <<"world\n">>]
 }
 
 pub fn trim_start_test() {
@@ -60,7 +59,6 @@ pub fn trim_end_test() {
   let b = bit_array.from_string("\t\r\n h ello\r\t \n")
   assert bytes.trim_end(b) == <<"\t\r\n h ello">>
 }
-
 
 pub fn trim_test() {
   let a = bit_array.from_string("hello")
